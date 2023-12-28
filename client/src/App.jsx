@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
 import "./styles/main.css";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-function App() {
+const App = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-cyan-800">
-        Hello world!
-      </h1>
+      <Header />
+      <Body />
     </>
   );
-}
+};
 
 export default App;
