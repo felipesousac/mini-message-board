@@ -1,26 +1,31 @@
 package com.message.board.controller;
 
+
 import com.message.board.model.UserMessage;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.message.board.model.UserMessageRegisterData;
+import com.message.board.repository.UserMessageRepository;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 
-@Controller
+@RestController
+@RequestMapping("/")
 public class BoardController {
+    @Autowired
+    private UserMessageRepository userMessageRepository;
 
-    private ArrayList<UserMessage> messages = new ArrayList<>();
+    @GetMapping
+    public Iterable<UserMessage> listMessages() {
 
-
-    @GetMapping("/")
-    public String index(ModelMap model) {
-        return "index";
+        return userMessageRepository.findAll();
     }
 
-    @GetMapping("/new")
-    public String newMessage() {
-        return "newMessage";
+    @PostMapping("/new")
+    public void newMessage(@RequestBody @Valid UserMessageRegisterData data) {
+        UserMessage user = new UserMessage(data);
+        userMessageRepository.save(user);
+
+        System.out.println("Usuario salvo com sucesso");
     }
 }

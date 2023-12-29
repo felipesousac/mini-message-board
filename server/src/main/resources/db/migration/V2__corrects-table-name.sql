@@ -1,0 +1,1 @@
+RENAME TABLE authors TO user_message;
