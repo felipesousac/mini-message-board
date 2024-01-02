@@ -6,7 +6,7 @@ const Router = () => {
     {
       path: "/",
       element: <App />,
-      errorElement: <div>Not found</div>,
+      errorElement: <>Not Found</>,
     },
     {
       path: "/new",
