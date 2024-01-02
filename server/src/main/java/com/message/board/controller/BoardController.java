@@ -22,7 +22,7 @@ public class BoardController {
     }
 
     @PostMapping("/new")
-    public void newMessage(@RequestBody @Valid UserMessageRegisterData data) {
+    public void newMessage(@Valid UserMessageRegisterData data) {
         UserMessage user = new UserMessage(data);
         userMessageRepository.save(user);
 
