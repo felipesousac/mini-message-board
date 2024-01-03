@@ -1,0 +1,1 @@
+ALTER TABLE user_message MODIFY datetime VARCHAR(50);

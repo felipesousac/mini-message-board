@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -28,11 +29,13 @@ public class UserMessage {
     @Size(max = 50)
     private String name;
 
-    private Date datetime;
+    private String datetime;
 
     public UserMessage(UserMessageRegisterData data) {
         this.name = data.name();
         this.text = data.text();
-        this.datetime = new Date();
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.datetime = format.format(new Date());
     }
 }
