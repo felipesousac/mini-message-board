@@ -17,12 +17,11 @@ public class BoardController {
 
     @GetMapping
     public Iterable<UserMessage> listMessages() {
-
         return userMessageRepository.findAll();
     }
 
     @PostMapping("/new")
-    public void newMessage(@Valid UserMessageRegisterData data) {
+    public void newMessage(@RequestBody @Valid UserMessageRegisterData data) {
         UserMessage user = new UserMessage(data);
         userMessageRepository.save(user);
 

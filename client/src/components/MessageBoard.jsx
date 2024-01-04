@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/main.css";
+import Form from "./Form";
 
 const MessageBoard = () => {
   const [message, setMessage] = useState([]);
 
+  // GET request to list all messages
   useEffect(() => {
     axios.get("http://localhost:8080").then((response) => {
       setMessage(response.data);
@@ -13,10 +15,7 @@ const MessageBoard = () => {
 
   return (
     <>
-      <div className="w-9/12 border-solid shadow-lg mt-1 p-3 bg-white rounded-lg">
-        <h6 className="pb-2 mb-1 border-b border-gray-200 font-medium">
-          Messages
-        </h6>
+      <div className="w-9/12 h-2/4 overflow-auto border-solid shadow-lg mt-1 p-3 bg-white rounded-lg">
         {message.map((message) => (
           <div className="pt-3" key={message.id}>
             <div className="pb-3 mb-0 small lh-125 border-bottom border-gray border-b border-gray-200">
