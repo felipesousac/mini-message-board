@@ -1,18 +1,6 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import "../styles/main.css";
-import Form from "./Form";
 
-const MessageBoard = () => {
-  const [message, setMessage] = useState([]);
-
-  // GET request to list all messages
-  useEffect(() => {
-    axios.get("http://localhost:8080").then((response) => {
-      setMessage(response.data);
-    });
-  }, []);
-
+const MessageBoard = ({ message }) => {
   return (
     <>
       <div className="w-9/12 h-2/4 overflow-auto border-solid shadow-lg mt-1 p-3 bg-white rounded-lg">
